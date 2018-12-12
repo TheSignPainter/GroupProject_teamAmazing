@@ -1,5 +1,4 @@
-
-f = open("bond_info.txt", mode='r',encoding='utf8')
+# Todo: Ensure the date is legal. Otherwise we'll get NULL(\N).
 
 # 描述，字段，数据类型
 data_definition ="""公司名称	company_name STRING
@@ -34,81 +33,57 @@ data_definition ="""公司名称	company_name STRING
 备注	remarks STRING
 """
 
-chs_to_attribute = dict()
-for i in data_definition.split('\n'):
-    if i != '':
-        # print(i)
-        print(i.split('\t')[0],i.split('\t')[1].split(' ')[0])
-        chs_to_attribute[i.split('\t')[0]]=i.split('\t')[1].split(' ')[0]
 
-class bond:
+class Bond():
     def __init__(self):
-        self.attributes=dict()
-        # self.company_name = None
-        # self.bond_id = None
-        # self.abbrev = None
-        # self.release_date = None
-        # self.on_market_date = None
-        # self.issue_amount = None
-        # self.denomination = None
-        # self.initial_offer_price = None
-        # self.bond_term = None
-        # self.APR = None
-        # self.adjusted_APR = None
-        # self.dated_date = None
-        # self.expiration_date = None
-        # self.redemption_price = None
-        # self.issue_start_date = None
-        # self.issue_end_date = None
-        # self.subscriber = None
-        # self.bond_value = None
-        # self.list_location = None
-        # self.credit_rank = None
-        # self.issue_institution = None
-        # self.repayment_method = None
-        # self.guarantor = None
-        # self.issurance_method = None
-        # self.issuing_target = None
-        # self.lead_underwriter = None
-        # self.tax_status = None
-        # self.bond_type = None
-        # self.remarks = None
-    def update(self,description,value):
-        attribute = chs_to_attribute.get(description)
+        self.attributes = dict()
+        self.chs_to_attribute = dict()
+        for i in data_definition.split('\n'):
+            if i != '':
+                # print(i.split('\t')[0],i.split('\t')[1].split(' ')[0])
+                self.chs_to_attribute[i.split('\t')[0]] = i.split('\t')[1].split(' ')[0]
+
+    def update(self, description, value):
+        attribute = self.chs_to_attribute.get(description)
         assert attribute is not None
-        self.attributes[attribute]=value
+        self.attributes[attribute] = value
 
-bonds = []
-current_bond=None
-for i in f.readlines():
-    # print(i)
-    list = i.strip().split("\t", maxsplit=1)
-    print(list)
-    if list[0] == "公司名称":
-        if (current_bond):
-            bonds.append(current_bond)
-        current_bond = bond()
-    if len(list)>1:
-        current_bond.update(list[0],list[1])
-print(bonds[0].attributes)
 
-attr_order=[]
-for i in data_definition.split('\n'):
-    if i != '':
+def generate_output(input_path, output_path):
+
+    f = open(input_path, mode='r',encoding='utf8')
+    bonds = []
+    current_bond=None
+    for i in f.readlines():
         # print(i)
-        attr_order.append(i.split('\t')[1].split(' ')[0])
-print(attr_order)
-content = []
-output = open("output.txt", mode='w', encoding="utf-8")
-for bond in bonds:
-    line = ""
-    for i in attr_order:
-        attr_value = bond.attributes.get(i)
-        if attr_value:
-            line+=attr_value+"\t"
-        else:
-            line+="\\N\t"
-    line+="\n"
-    print(line)
-    content.append(line)
-output.writelines(content)
+        list = i.strip().split("\t", maxsplit=1)
+        # print(list)
+        if list[0] == "公司名称":
+            if (current_bond):
+                bonds.append(current_bond)
+            current_bond = Bond()
+        if len(list)>1:
+            current_bond.update(list[0],list[1])
+    # print(bonds[0].attributes)
+
+    attr_order=[]
+    for i in data_definition.split('\n'):
+        if i != '':
+            # print(i)
+            attr_order.append(i.split('\t')[1].split(' ')[0])
+    # print(attr_order)
+    content = []
+    output = open(output_path, mode='w', encoding="utf-8")
+    for bond in bonds:
+        line = ""
+        for i in attr_order:
+            attr_value = bond.attributes.get(i)
+            if attr_value:
+                line+=attr_value+"\t"
+            else:
+                line+="\\N\t"
+        line+="\n"
+        # print(line)
+        content.append(line)
+    output.writelines(content)
+    print("Successfully generated output at:", output_path)
