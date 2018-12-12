@@ -1,0 +1,3 @@
+实际数据使用hive/hadoop-mapreduce, metadata用Apache derby存储。
+
+Derby at: /home/fourier/Apache/db-...
