@@ -1,4 +1,6 @@
 # Todo: Ensure the date is legal. Otherwise we'll get NULL(\N).
+from util import check_date
+
 
 # 描述，字段，数据类型
 data_definition ="""公司名称	company_name STRING
@@ -33,6 +35,7 @@ data_definition ="""公司名称	company_name STRING
 备注	remarks STRING
 """
 
+date_attributes=["release_date","on_market_date","dated_date","expiration_date","issue_start_date","issue_end_date"]
 
 class Bond():
     def __init__(self):
@@ -46,11 +49,14 @@ class Bond():
     def update(self, description, value):
         attribute = self.chs_to_attribute.get(description)
         assert attribute is not None
+        if attribute in date_attributes:
+            if not check_date(value):
+                return -1
         self.attributes[attribute] = value
+        return 0
 
 
 def generate_output(input_path, output_path):
-
     f = open(input_path, mode='r',encoding='utf8')
     bonds = []
     current_bond=None
