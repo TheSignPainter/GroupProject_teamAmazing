@@ -1,0 +1,226 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?><!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>Yield Curve | Amazing</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <link rel="alternate icon" type="image/png" href="assets/i/amazing-icon.png">
+  <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
+  <script src="assets/js/echarts.min.js"></script>
+  <style>
+    .get {
+        background: #1E5B94;
+        color: #fff;
+        text-align: left;
+        padding: 50px 0;
+        padding-bottom: 42px;
+    }
+    .get-title {
+      font-size: 200%;
+      padding: 20px;
+      display: inline-block;
+      margin-bottom: 0;
+    }
+    
+    .my-head {
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .my-button {
+      position: fixed;
+      top: 0;
+      right: 0;
+      border-radius: 0;
+    }
+    .my-sidebar {
+      padding-right: 0;
+      border-right: 1px solid #eeeeee;
+    }
+    .footer p {
+      color: #7f8c8d;
+      margin: 0;
+      padding: 15px 0;
+      text-align: center;
+      background: #2d3e50;
+    }
+  </style>
+</head>
+<body>
+<header class="am-topbar am-topbar-fixed-top">
+  <div class="am-container">
+    <h1 class="am-topbar-brand">
+      <a href="/">Amazing</a>
+    </h1>
+
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-secondary am-show-sm-only"
+            data-am-collapse="{target: '#collapse-head'}"><span class="am-sr-only">导航切换</span> <span
+        class="am-icon-bars"></span></button>
+
+    <div class="am-collapse am-topbar-collapse" id="collapse-head">
+      <ul class="am-nav am-nav-pills am-topbar-nav">
+        <li><a href="/">首页</a></li>
+        <li class="am-active"><a href="#">收益率曲线</a></li>
+        <li><a href="/calculator">计算器</a></li>
+        <li><a href="#">Bond Gallery</a></li>
+        <li class="am-dropdown" data-am-dropdown>
+          <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+            关于我们 <span class="am-icon-caret-down"></span>
+          </a>
+          <ul class="am-dropdown-content">
+            <li><a href="#">模型</a></li>
+            <li><a href="#">blog</a></li>
+          </ul>
+        </li>
+      </ul>
+
+      <div class="am-topbar-right">
+        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> Sign in</button>
+      </div>
+
+      <div class="am-topbar-right">
+        <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> Sign up</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="get">
+  <div class="am-g">
+    <div class="am-u-lg-8 am-u-lg-centered">
+      <h1 class="get-title">收益率曲线</h1>
+      <h3 style="margin-top: 0;margin-bottom: 0;margin-left: 1.6rem">Amazing根据债券市场数据绘制债券收益率曲线</h3>
+    </div>
+  </div>
+</div>
+
+<div class="am-g" style="margin-top: 4rem"> 
+  <div class="am-u-lg-2 am-u-lg-push-2">
+      <ul class="am-list">
+        <li><a href="#">国债曲线</a></li>
+        <li>
+          <a class="am-cf" data-am-collapse="{target: '#collapse-states'}"> 地方政府债曲线 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse" id="collapse-states" style="list-style-type: disc;">
+            <li><a href="#"> 地方政府债曲线(AAA)</a></li>
+            <li><a href="#"> 地方政府债曲线(AAA-)</a></li>
+          </ul>
+        </li>
+        <li>
+          <a class="am-cf" data-am-collapse="{target: '#collapse-corps'}"> 企业债曲线 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <ul class="am-list am-collapse" id="collapse-corps">
+            <li><a href="#"> 企业债曲线(AAA)</a></li>
+            <li><a href="#"> 企业债曲线(AAA-)</a></li>
+            <li><a href="#"> 企业债曲线(AA+)</a></li>
+            <li><a href="#"> 企业债曲线(AA)</a></li>
+            <li><a href="#"> 企业债曲线(AA-)</a></li>
+          </ul>
+        </li>
+      </ul>
+  </div>
+  <!--Curves Drawing-->
+  <div class="am-u-lg-6 am-u-lg-pull-2" style="height: 50rem">
+    <div id="curve-main" style="width: 100%; height: 100%"></div>
+  </div>
+</div>
+
+<!--<footer class="footer">
+  <p>© 2014 <a href="http://www.yunshipei.com" target="_blank">AllMobilize, Inc.</a> Licensed under <a
+      href="http://opensource.org/licenses/MIT" target="_blank">MIT license</a>. by the AmazeUI Team.</p>
+</footer>-->
+
+<!--[if lt IE 9]>
+<script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+<script src="assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+
+<script type="text/javascript">
+      var myChart = echarts.init(document.getElementById('curve-main'));
+
+      var option = {
+          title: {
+              text: '国债收益率曲线'
+          },
+          tooltip: {
+              trigger: 'axis'
+          } ,
+          xAxis: {
+              type: 'value',
+              scale: true
+          },
+          yAxis: {
+              type: 'value',
+              scale: true
+          },
+          series: [{
+              data: [[0.5, 2.52],
+                     [1, 2.6500800000000004],
+                     [2, 2.92836],
+                     [3, 3.11],
+                     [4, 3.1925],
+                     [5, 3.28],
+                     [6, 3.394575],
+                     [7, 3.47],
+                     [8, 3.4863851851851857],
+                     [9, 3.5027481481481484],
+                     [10, 3.52],
+                     [11, 3.538712500000001],
+                     [12, 3.5587],
+                     [13, 3.579737499999999],
+                     [14, 3.6016000000000004],
+                     [15, 3.6240625],
+                     [16, 3.6469],
+                     [17, 3.6698875],
+                     [18, 3.6928000000000005],
+                     [19, 3.7154125000000002],
+                     [20, 3.7375000000000003],
+                     [21, 3.7588375000000003],
+                     [22, 3.779200000000001],
+                     [23, 3.7983625],
+                     [24, 3.8160999999999996],
+                     [25, 3.8321875],
+                     [26, 3.8464000000000005],
+                     [27, 3.8585124999999993],
+                     [28, 3.8682999999999996],
+                     [29, 3.875537500000001],
+                     [30, 3.88],
+                     [31, 3.883000000000001],
+                     [32, 3.8859999999999997],
+                     [33, 3.888999999999999],
+                     [34, 3.8920000000000003],
+                     [35, 3.8949999999999996],
+                     [36, 3.898],
+                     [37, 3.901],
+                     [38, 3.904000000000001],
+                     [39, 3.907],
+                     [40, 3.91],
+                     [41, 3.9130000000000003],
+                     [42, 3.9160000000000004],
+                     [43, 3.919],
+                     [44, 3.9219999999999997],
+                     [45, 3.9250000000000003],
+                     [46, 3.9280000000000004],
+                     [47, 3.930999999999999],
+                     [48, 3.9339999999999997],
+                     [49, 3.9370000000000007],
+                     [50, 3.94]],
+              type: 'line',
+              smooth: true
+          }]
+        };
+
+      myChart.setOption(option);
+  </script>
+</body>
+</html>
