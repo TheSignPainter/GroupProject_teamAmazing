@@ -14,7 +14,7 @@ data_definition ="""公司名称	company_name STRING
 期限(年)	bond_term DOUBLE
 年利率(%)	APR DOUBLE
 调整后年利率	adjusted_APR DOUBLE
-计息日	dated_date STRING (MM-DD)
+计息日	dated_date STRING (MM.DD)
 到期日	expiration_date STRING (YYYY-MM-DD)
 兑付价(元)	redemption_price DOUBLE
 发行起始日	issue_start_date STRING (YYYY-MM-DD)
@@ -24,7 +24,7 @@ data_definition ="""公司名称	company_name STRING
 上市地	list_location STRING
 信用级别	credit_rank STRING
 发行单位	issue_institution STRING
-还本付息方式	repayment_method STRING
+还本付息方式	repayment_method INT
 发行担保人	guarantor STRING
 发行方式	issurance_method STRING
 发行对象	issuing_target STRING
@@ -35,7 +35,7 @@ data_definition ="""公司名称	company_name STRING
 备注	remarks STRING
 """
 
-date_attributes=["release_date","on_market_date","dated_date","expiration_date","issue_start_date","issue_end_date"]
+date_attributes=["release_date","on_market_date","expiration_date","issue_start_date","issue_end_date"]
 
 class Bond():
     def __init__(self):
@@ -47,6 +47,7 @@ class Bond():
                 self.chs_to_attribute[i.split('\t')[0]] = i.split('\t')[1].split(' ')[0]
 
     def update(self, description, value):
+        value = value.replace('\u3000','')
         attribute = self.chs_to_attribute.get(description)
         assert attribute is not None
         if attribute in date_attributes:
@@ -85,7 +86,7 @@ def generate_output(input_path, output_path):
         for i in attr_order:
             attr_value = bond.attributes.get(i)
             if attr_value:
-                line+=attr_value+"\t"
+                line+=attr_value.strip()+"\t"
             else:
                 line+="\\N\t"
         line+="\n"
@@ -93,3 +94,5 @@ def generate_output(input_path, output_path):
         content.append(line)
     output.writelines(content)
     print("Successfully generated output at:", output_path)
+
+generate_output("formal_bond_info.txt","output.txt")

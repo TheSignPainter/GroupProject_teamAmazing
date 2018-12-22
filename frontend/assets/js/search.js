@@ -1,2 +1,0 @@
-$(function(){
-$("#search").text('ddd');});

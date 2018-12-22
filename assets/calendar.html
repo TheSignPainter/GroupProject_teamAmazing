@@ -1,0 +1,92 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title></title>
+<style type="text/css">body{background:#fff;font-size:12px;margin:0px;padding:0px;text-align:left; font-family:"宋体";}
+#L_calendar{border:1px solid #666;width:158px;padding:1px;height:170px;z-index:9998;text-align:center}
+#L_calendar-year-month{height:23px;line-height:23px;z-index:9998;background:#999; color:#FFF;}
+#SelectYearLayer{z-index: 9999;position: absolute;top: 3px; left: 25px;}#SelectMonthLayer{z-index: 9999;position: absolute;top: 3px; left: 85px;}#L_calendar-year{line-height:23px;width:60px;float:left;z-index:9998;position: absolute;top: 2px; left: 25px;font-weight:bold;cursor:default;font-family:Verdana, Arial, Helvetica, sans-serif;}
+#L_calendar-month{line-height:23px;width:48px;float:left;z-index:9998;position: absolute;top: 2px; left: 85px;font-weight:bold;cursor:default;font-family:Verdana, Arial, Helvetica, sans-serif;}
+#L_calendar-PrevM{position: absolute;top: 2px; left: 5px;cursor:pointer;}#L_calendar-NextM{position: absolute;top: 2px; left: 138px;cursor:pointer}#L_calendar-week{height:23px;line-height:23px;z-index:9998;}
+#L_calendar-day{height:126px;z-index:9998;}
+#L_calendar-week ul{cursor:move;list-style:none;margin:0px;padding:0px;}
+#L_calendar-week li{width:20px;height:20px;float:left;;margin:1px;padding:0px;text-align:center;}
+#L_calendar-day ul{list-style:none;margin:0px;padding:0px;}
+#L_calendar-day li{cursor:pointer;width:20px;height:20px; line-height:20px;float:left;;margin:1px;padding:0px;background:#EFEFEF;font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px;}
+#L_calendar-control{height:25px;z-index:9998;}
+#L_calendar-today{cursor:pointer;float:left;width:64px;height:20px;line-height:20px;margin:1px;text-align:center;background:#999; color:#FFF; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:10px;}</style></head>
+<body>
+<div id="L_calendar" style="width: 154px; height: 178px;">
+<span id="SelectYearLayer" style="display: none;"></span>
+<span id="SelectMonthLayer" style="display: none;"></span>
+<div id="L_calendar-year-month"><div id="L_calendar-PrevM" onclick="parent.MyCalendar.PrevM()" title="前一月"><b>&lt;&lt;</b></div><div id="L_calendar-year" onmouseover="style.backgroundColor='#666'" onmouseout="style.backgroundColor='#999'" onclick="parent.MyCalendar.SelectYearInnerHTML('2018')">2018 年</div><div id="L_calendar-month" onmouseover="style.backgroundColor='#666'" onmouseout="style.backgroundColor='#999'" onclick="parent.MyCalendar.SelectMonthInnerHTML('11')" style="background-color: rgb(153, 153, 153);">11 月</div><div id="L_calendar-NextM" onclick="parent.MyCalendar.NextM()" title="后一月"><b>&gt;&gt;</b></div></div>
+<div id="L_calendar-week"><ul onmouseup="StopMove()"><li>日</li><li>一</li><li>二</li><li>三</li><li>四</li><li>五</li><li>六</li></ul></div>
+<div id="L_calendar-day">
+<ul>
+<li id="L_calendar-day_0" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="10 月28 日" style="background: rgb(239, 239, 239);"><b style="color:#999">28</b></li>
+<li id="L_calendar-day_1" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="10 月29 日" style="background: rgb(239, 239, 239);"><b style="color:#999">29</b></li>
+<li id="L_calendar-day_2" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="10 月30 日" style="background: rgb(239, 239, 239);"><b style="color:#999">30</b></li>
+<li id="L_calendar-day_3" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="10 月31 日" style="background: rgb(239, 239, 239);"><b style="color:#999">31</b></li>
+<li id="L_calendar-day_4" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,1)" title="11 月1 日" style="background: rgb(239, 239, 239);"><b style="color:#000">1</b></li>
+<li id="L_calendar-day_5" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,2)" title="11 月2 日" style="background: rgb(239, 239, 239);"><b style="color:#000">2</b></li>
+<li id="L_calendar-day_6" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,3)" title="11 月3 日" style="background: rgb(239, 239, 239);"><b style="color:#000">3</b></li>
+<li id="L_calendar-day_7" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,4)" title="11 月4 日" style="background: rgb(239, 239, 239);"><b style="color:#000">4</b></li>
+<li id="L_calendar-day_8" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,5)" title="11 月5 日" style="background: rgb(239, 239, 239);"><b style="color:#000">5</b></li>
+<li id="L_calendar-day_9" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,6)" title="11 月6 日" style="background: rgb(239, 239, 239);"><b style="color:#000">6</b></li>
+<li id="L_calendar-day_10" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,7)" title="11 月7 日" style="background: rgb(239, 239, 239);"><b style="color:#000">7</b></li>
+<li id="L_calendar-day_11" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,8)" title="11 月8 日" style="background: rgb(239, 239, 239);"><b style="color:#000">8</b></li>
+<li id="L_calendar-day_12" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,9)" title="11 月9 日" style="background: rgb(239, 239, 239);"><b style="color:#000">9</b></li>
+<li id="L_calendar-day_13" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,10)" title="11 月10 日" style="background: rgb(239, 239, 239);"><b style="color:#000">10</b></li>
+<li id="L_calendar-day_14" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,11)" title="11 月11 日" style="background: rgb(239, 239, 239);"><b style="color:#000">11</b></li>
+<li id="L_calendar-day_15" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,12)" title="11 月12 日" style="background: rgb(239, 239, 239);"><b style="color:#000">12</b></li>
+<li id="L_calendar-day_16" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,13)" title="11 月13 日" style="background: rgb(239, 239, 239);"><b style="color:#000">13</b></li>
+<li id="L_calendar-day_17" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,14)" title="11 月14 日" style="background: rgb(239, 239, 239);"><b style="color:#000">14</b></li>
+<li id="L_calendar-day_18" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,15)" title="11 月15 日" style="background: rgb(239, 239, 239);"><b style="color:#000">15</b></li>
+<li id="L_calendar-day_19" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,16)" title="11 月16 日" style="background: rgb(239, 239, 239);"><b style="color:#000">16</b></li>
+<li id="L_calendar-day_20" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,17)" title="11 月17 日" style="background: rgb(239, 239, 239);"><b style="color:#000">17</b></li>
+<li id="L_calendar-day_21" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,18)" title="11 月18 日" style="background: rgb(239, 239, 239);"><b style="color:#000">18</b></li>
+<li id="L_calendar-day_22" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,19)" title="11 月19 日" style="background: rgb(239, 239, 239);"><b style="color:#000">19</b></li>
+<li id="L_calendar-day_23" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,20)" title="11 月20 日" style="background: rgb(153, 204, 255);"><b style="color:#000">20</b></li>
+<li id="L_calendar-day_24" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,21)" title="11 月21 日" style="background: rgb(239, 239, 239);"><b style="color:#000">21</b></li>
+<li id="L_calendar-day_25" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,22)" title="11 月22 日" style="background: rgb(239, 239, 239);"><b style="color:#000">22</b></li>
+<li id="L_calendar-day_26" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,23)" title="11 月23 日" style="background: rgb(239, 239, 239);"><b style="color:#000">23</b></li>
+<li id="L_calendar-day_27" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,24)" title="11 月24 日" style="background: rgb(239, 239, 239);"><b style="color:#000">24</b></li>
+<li id="L_calendar-day_28" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,25)" title="11 月25 日" style="background: rgb(239, 239, 239);"><b style="color:#000">25</b></li>
+<li id="L_calendar-day_29" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,26)" title="11 月26 日" style="background: rgb(239, 239, 239);"><b style="color:#000">26</b></li>
+<li id="L_calendar-day_30" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,27)" title="11 月27 日" style="background: rgb(239, 239, 239);"><b style="color:#000">27</b></li>
+<li id="L_calendar-day_31" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,28)" title="11 月28 日" style="background: rgb(239, 239, 239);"><b style="color:#000">28</b></li>
+<li id="L_calendar-day_32" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,29)" title="11 月29 日" style="background: rgb(239, 239, 239);"><b style="color:#000">29</b></li>
+<li id="L_calendar-day_33" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="parent.MyCalendar.DayClick(11,30)" title="11 月30 日" style="background: rgb(239, 239, 239);"><b style="color:#000">30</b></li>
+<li id="L_calendar-day_34" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="12 月1 日" style="background: rgb(239, 239, 239);"><b style="color:#999">1</b></li>
+<li id="L_calendar-day_35" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="12 月2 日" style="background: rgb(239, 239, 239);"><b style="color:#999">2</b></li>
+<li id="L_calendar-day_36" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="12 月3 日" style="background: rgb(239, 239, 239);"><b style="color:#999">3</b></li>
+<li id="L_calendar-day_37" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="12 月4 日" style="background: rgb(239, 239, 239);"><b style="color:#999">4</b></li>
+<li id="L_calendar-day_38" onmouseover="this.style.background='#FFD700'" onmouseout="this.style.background='#EFEFEF'" onclick="" title="12 月5 日" style="background: rgb(239, 239, 239);"><b style="color:#999">5</b></li>
+</ul>
+<span id="L_calendar-today" onclick="parent.MyCalendar.Today()"><b>TODAY</b></span>
+</div>
+</div>
+<script type="text/javascript">
+var MouseX,MouseY;var Moveable=true;
+var MoveaStart=false;
+document.onmousemove=function(e)
+{
+var DateLayer=parent.document.getElementById("L_DateLayer");
+	e = window.event || e;
+var DateLayerLeft=DateLayer.style.posLeft || parseInt(DateLayer.style.left.replace("px",""));
+var DateLayerTop=DateLayer.style.posTop || parseInt(DateLayer.style.top.replace("px",""));
+if(MoveaStart){DateLayer.style.left=(DateLayerLeft+e.clientX-MouseX)+"px";DateLayer.style.top=(DateLayerTop+e.clientY-MouseY)+"px"}
+;
+}
+document.getElementById("L_calendar-week").onmousedown=function(e){
+if(Moveable){MoveaStart=true;}
+	e = window.event || e;
+  MouseX = e.clientX;
+  MouseY = e.clientY;
+	}
+function StopMove(){
+MoveaStart=false;
+	}
+</script>
+
+
+
+</body></html>
