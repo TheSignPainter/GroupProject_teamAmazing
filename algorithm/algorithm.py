@@ -3,7 +3,7 @@ import numpy as np
 from  datetime import date
 
 class Bond():
-    def __init__(self, yieldToMaturity=0.01, parValue=100, buyDate=date(2008, 12, 15), buyPrice = 100, startDate=date(1996, 12, 15) ,maturity=date(2018, 12, 15), frequency=1, ir = 0.03, epsilon = 0.000001):
+    def __init__(self, yieldToMaturity=0.01, parValue=100, buyDate=date(2008, 12, 15), buyPrice = 100, startDate=date(1996, 12, 15) ,maturity=date(2018, 12, 15), frequency=1, ir = 0.03, epsilon = 0.000001, verbose=True):
         self.yieldToMaturity = float(yieldToMaturity)
         self.parValue = float(parValue)
         self.buyDate = buyDate
@@ -33,6 +33,7 @@ class Bond():
         self.duration, self.modifiedD = self.computeDuration()
         self.convexity = self.computeConvexity()
         self.computed_YTM = self.computeYTM()
+        self.verbose = verbose
         
     def computePayTimes(self):
         if self.frequency == 1:
@@ -49,23 +50,27 @@ class Bond():
                 elif self.maturity.month == self.payDate[1][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 2
                 else:
-                    print("maturity date does not match with start date and pay frequency")
+                    if self.verbose:
+                        print("maturity date does not match with start date and pay frequency")
             elif flag1 > 0 and flag2 < 0:
                 if self.maturity.month == self.payDate[0][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 2
                 elif self.maturity.month == self.payDate[1][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 3
                 else:
-                    print("maturity date does not match with start date and pay frequency")
+                    if self.verbose:
+                        print("maturity date does not match with start date and pay frequency")
             elif flag1 < 0 and flag2 < 0:
                 if self.maturity.month == self.payDate[0][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 3
                 elif self.maturity.month == self.payDate[1][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 4
                 else:
-                    print("maturity date does not match with start date and pay frequency")
+                    if self.verbose:
+                        print("maturity date does not match with start date and pay frequency")
             else:
-                print("weird results")
+                if self.verbose:
+                    print("weird results")
                     
     def computeDaysToPay(self):
         if self.frequency == 1:
@@ -83,7 +88,8 @@ class Bond():
             elif flag1 < 0 and flag2 < 0:
                 return (self.buyDate - date(self.buyDate.year-1, self.payDate[1][0], self.payDate[1][1])).days, abs(flag1)
             else:
-                print("weird results")
+                if self.verbose:
+                    print("weird results")
     
     def presentValue(self):
         pv_clean = float(0)
