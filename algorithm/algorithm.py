@@ -22,7 +22,7 @@ class Bond():
         elif frequency == 2:
             self.payDate = [[startDate.month, startDate.day], [(startDate.month+6)%12, startDate.day]]
             if self.payDate[1][0] == 0:
-                self.payDate[1][0] == 12
+                self.payDate[1][0] = 12
             # paytime排序
             if self.payDate[0][0] > self.payDate[1][0]:
                 self.payDate[0], self.payDate[1] = self.payDate[1], self.payDate[0]
@@ -49,21 +49,21 @@ class Bond():
                 elif self.maturity.month == self.payDate[1][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 2
                 else:
-                    print("maturity date dose not match with start date and pay frequency")
+                    print("maturity date does not match with start date and pay frequency")
             elif flag1 > 0 and flag2 < 0:
                 if self.maturity.month == self.payDate[0][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 2
                 elif self.maturity.month == self.payDate[1][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 3
                 else:
-                    print("maturity date dose not match with start date and pay frequency")
+                    print("maturity date does not match with start date and pay frequency")
             elif flag1 < 0 and flag2 < 0:
                 if self.maturity.month == self.payDate[0][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 3
                 elif self.maturity.month == self.payDate[1][0]:
                     return (self.maturity.year - self.buyDate.year - 1) * 2 + 4
                 else:
-                    print("maturity date dose not match with start date and pay frequency")
+                    print("maturity date does not match with start date and pay frequency")
             else:
                 print("weird results")
                     
