@@ -26,6 +26,7 @@ class Bond():
             # paytime排序
             if self.payDate[0][0] > self.payDate[1][0]:
                 self.payDate[0], self.payDate[1] = self.payDate[1], self.payDate[0]
+        self.verbose = verbose
         self.remainingPayTimes = self.computePayTimes()
         self.daysPastLastPay, self.daysToNextPay = self.computeDaysToPay()
         self.pv_clean, self.pv_dirty = self.presentValue() 
@@ -33,7 +34,6 @@ class Bond():
         self.duration, self.modifiedD = self.computeDuration()
         self.convexity = self.computeConvexity()
         self.computed_YTM = self.computeYTM()
-        self.verbose = verbose
         
     def computePayTimes(self):
         if self.frequency == 1:

@@ -1,3 +1,12 @@
 实际数据使用hive/hadoop-mapreduce, metadata用Apache derby存储。
 
 Derby at: /home/fourier/Apache/db-...
+
+CREATE TABLE users(id STRING, email STRING, password STRING)
+COMMENT 'A bucketed version supports update&delete.'
+CLUSTERED BY(id) INTO 64 BUCKETS STORED AS ORC
+TBLPROPERTIES("transactional"="true",
+  "compactor.mapreduce.map.memory.mb"="2048", 
+  "compactorthreshold.hive.compactor.delta.num.threshold"="4", 
+  "compactorthreshold.hive.compactor.delta.pct.threshold"="0.5" 
+);
