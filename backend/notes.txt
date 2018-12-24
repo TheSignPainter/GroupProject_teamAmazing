@@ -2,11 +2,16 @@
 
 Derby at: /home/fourier/Apache/db-...
 
-CREATE TABLE users(id STRING, email STRING, password STRING)
-COMMENT 'A bucketed version supports update&delete.'
+表的定义：
+
+CREATE TABLE users(id STRING, user_name STRING, email STRING, password STRING)
+COMMENT "A bucketed version supports update&delete."
 CLUSTERED BY(id) INTO 64 BUCKETS STORED AS ORC
 TBLPROPERTIES("transactional"="true",
   "compactor.mapreduce.map.memory.mb"="2048", 
   "compactorthreshold.hive.compactor.delta.num.threshold"="4", 
   "compactorthreshold.hive.compactor.delta.pct.threshold"="0.5" 
 );
+
+ hadoop jar ~/Invoke/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar -D stream.non.zero.exit.is.failure=false -files backend -input tmp/tmp.txt  -output hd_output -mapper "python3 backend/MR_mapper.py" -reducer "python3 backend/MR_reducer.py"
+

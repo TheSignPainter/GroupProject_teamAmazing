@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="26c22b5a-7b9f-4f21-b96b-ef2cf66e0a74" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MR_example.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/MR_mapper.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/backend/MR_reducer.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/backend/MR_Mapper.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/algorithm/algorithm.py" afterPath="$PROJECT_DIR$/algorithm/algorithm.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/MR_Mapper.py" afterPath="$PROJECT_DIR$/backend/MR_Mapper.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/hive_remote.py" afterPath="$PROJECT_DIR$/backend/hive_remote.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/backend/notes.txt" afterPath="$PROJECT_DIR$/backend/notes.txt" />
     </list>
@@ -17,23 +19,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="web.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="792">
-              <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
-              <folding>
-                <element signature="e#1#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hive_remote.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="hive_remote.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/hive_remote.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="19" column="71" lean-forward="true" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+            <state relative-caret-position="176">
+              <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -41,14 +31,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MR_Mapper.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/MR_Mapper.py">
+      <file leaf-file-name="algorithm.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/algorithm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="594">
-              <caret line="27" column="104" lean-forward="true" selection-start-line="27" selection-start-column="104" selection-end-line="27" selection-end-column="104" />
+            <state relative-caret-position="198">
+              <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+              <folding>
+                <element signature="e#102#112#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MR_example.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/MR_example.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="354">
+              <caret line="58" column="35" lean-forward="false" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MR_mapper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/MR_mapper.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MR_reducer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/MR_reducer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tmp.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/tmp.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="3422" column="44" lean-forward="false" selection-start-line="3422" selection-start-column="38" selection-end-line="3422" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -66,18 +100,8 @@
       <file leaf-file-name="output.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/output.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
+            <state relative-caret-position="22">
               <caret line="14" column="113" lean-forward="false" selection-start-line="14" selection-start-column="112" selection-end-line="14" selection-end-column="113" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/util.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="46" lean-forward="false" selection-start-line="4" selection-start-column="46" selection-end-line="4" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -86,49 +110,9 @@
       <file leaf-file-name="formal_bond_info.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/formal_bond_info.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2222">
-              <caret line="101" column="8" lean-forward="false" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
+            <state relative-caret-position="187">
+              <caret line="101181" column="10" lean-forward="false" selection-start-line="101181" selection-start-column="0" selection-end-line="101181" selection-end-column="10" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="algorithm.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/algorithm/algorithm.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="37" column="23" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="update_records.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/update_records.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="704">
-              <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainpage.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/mainpage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2596">
-              <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="32" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#hr#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -155,6 +139,11 @@
       <find>self.verbose</find>
       <find>computepay</find>
       <find>computepaytimes</find>
+      <find>发行起始日	\n</find>
+      <find>None</find>
+      <find>\t-1\t</find>
+      <find>还本付息方式\t-1</find>
+      <find>issue_start_date</find>
     </findStrings>
     <replaceStrings>
       <replace>assets</replace>
@@ -172,11 +161,18 @@
         <option value="$PROJECT_DIR$/backend/check_data.py" />
         <option value="$PROJECT_DIR$/algorithm/algorithm.py" />
         <option value="$PROJECT_DIR$/backend/MR_Mapper.py" />
+        <option value="$PROJECT_DIR$/MR_mapper.py" />
+        <option value="$PROJECT_DIR$/algorithm/__init__.py" />
+        <option value="$PROJECT_DIR$/backend/MR_reducer.py" />
         <option value="$PROJECT_DIR$/backend/hive_remote.py" />
+        <option value="$PROJECT_DIR$/backend/algorithm.py" />
+        <option value="$PROJECT_DIR$/backend/MR_mapper.py" />
+        <option value="$PROJECT_DIR$/backend/MR_example.py" />
+        <option value="$PROJECT_DIR$/MR_example.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1936" />
@@ -208,11 +204,6 @@
             <path>
               <item name="GroupProject_teamAmazing" type="b2602c69:ProjectViewProjectNode" />
               <item name="GroupProject_teamAmazing" type="462c0819:PsiDirectoryNode" />
-              <item name="algorithm" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GroupProject_teamAmazing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GroupProject_teamAmazing" type="462c0819:PsiDirectoryNode" />
               <item name="backend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -232,10 +223,12 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\My Documents\Documents\GitHub\GroupProject_teamAmazing" />
+      <recent name="D:\My Documents\Documents\GitHub\GroupProject_teamAmazing\backend" />
       <recent name="C:\Users\Invoker\Desktop\GroupProject_teamAmazing" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Invoker\Desktop\GroupProject_teamAmazing" />
     </key>
   </component>
@@ -251,7 +244,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.hive_remote">
+  <component name="RunManager" selected="Python.MR_mapper">
     <configuration name="MR_Mapper" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -264,7 +257,41 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="GroupProject_teamAmazing" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/MR_Mapper.py" />
+      <option name="SCRIPT_NAME" value="D:\My Documents\Documents\GitHub\GroupProject_teamAmazing\MR_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="MR_example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="GroupProject_teamAmazing" />
+      <option name="SCRIPT_NAME" value="D:\My Documents\Documents\GitHub\GroupProject_teamAmazing\MR_example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <configuration name="MR_mapper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/backend" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="GroupProject_teamAmazing" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/backend/MR_mapper.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -303,35 +330,20 @@
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
     </configuration>
-    <configuration name="web" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="GroupProject_teamAmazing" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/web.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-    </configuration>
-    <list size="4">
-      <item index="0" class="java.lang.String" itemvalue="Python.web" />
-      <item index="1" class="java.lang.String" itemvalue="Python.hive_remote" />
-      <item index="2" class="java.lang.String" itemvalue="Python.check_data" />
-      <item index="3" class="java.lang.String" itemvalue="Python.MR_Mapper" />
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Python.hive_remote" />
+      <item index="1" class="java.lang.String" itemvalue="Python.check_data" />
+      <item index="2" class="java.lang.String" itemvalue="Python.MR_Mapper" />
+      <item index="3" class="java.lang.String" itemvalue="Python.MR_example" />
+      <item index="4" class="java.lang.String" itemvalue="Python.MR_mapper" />
     </list>
     <recent_temporary>
-      <list size="4">
-        <item index="0" class="java.lang.String" itemvalue="Python.hive_remote" />
-        <item index="1" class="java.lang.String" itemvalue="Python.MR_Mapper" />
-        <item index="2" class="java.lang.String" itemvalue="Python.check_data" />
-        <item index="3" class="java.lang.String" itemvalue="Python.web" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.MR_mapper" />
+        <item index="1" class="java.lang.String" itemvalue="Python.MR_example" />
+        <item index="2" class="java.lang.String" itemvalue="Python.MR_Mapper" />
+        <item index="3" class="java.lang.String" itemvalue="Python.hive_remote" />
+        <item index="4" class="java.lang.String" itemvalue="Python.check_data" />
       </list>
     </recent_temporary>
   </component>
@@ -349,7 +361,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2553305" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -359,7 +371,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3286334" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329718" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39932126" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -385,7 +397,7 @@
         <state relative-caret-position="792">
           <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
           <folding>
-            <element signature="e#1#24#0" expanded="true" />
+            <element signature="e#1#24#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -436,9 +448,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="770">
           <caret line="37" column="23" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -455,18 +465,18 @@
         <state relative-caret-position="2596">
           <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="32" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/MR_Mapper.py">
+    <entry file="file://$PROJECT_DIR$/MR_example.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="34" lean-forward="true" selection-start-line="22" selection-start-column="34" selection-end-line="22" selection-end-column="34" />
@@ -481,7 +491,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#1#24#0" expanded="true" />
+            <element signature="e#1#24#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -532,9 +542,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
           <caret line="24" column="40" lean-forward="true" selection-start-line="24" selection-start-column="40" selection-end-line="24" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -551,13 +559,13 @@
         <state relative-caret-position="2596">
           <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="32" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -569,28 +577,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/mainpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2596">
-          <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="792">
           <caret line="39" column="39" lean-forward="false" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
           <folding>
-            <element signature="e#1#24#0" expanded="true" />
+            <element signature="e#1#24#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -605,34 +597,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/update_records.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="704">
+        <state relative-caret-position="550">
           <caret line="32" column="73" lean-forward="false" selection-start-line="32" selection-start-column="73" selection-end-line="32" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/formal_bond_info.txt">
+    <entry file="file://$PROJECT_DIR$/templates/mainpage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2222">
-          <caret line="101" column="8" lean-forward="false" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
-          <folding />
+        <state relative-caret-position="550">
+          <caret line="118" column="32" lean-forward="false" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#hr#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/algorithm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
+        <state relative-caret-position="584">
           <caret line="37" column="23" lean-forward="false" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/output.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="113" lean-forward="false" selection-start-line="14" selection-start-column="112" selection-end-line="14" selection-end-column="113" />
           <folding />
         </state>
       </provider>
@@ -645,20 +635,80 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/MR_Mapper.py">
+    <entry file="file://$PROJECT_DIR$/backend/tmp.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="27" column="104" lean-forward="true" selection-start-line="27" selection-start-column="104" selection-end-line="27" selection-end-column="104" />
+        <state relative-caret-position="187">
+          <caret line="3422" column="44" lean-forward="false" selection-start-line="3422" selection-start-column="38" selection-end-line="3422" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/output.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="14" column="113" lean-forward="false" selection-start-line="14" selection-start-column="112" selection-end-line="14" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/formal_bond_info.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="101181" column="10" lean-forward="false" selection-start-line="101181" selection-start-column="0" selection-end-line="101181" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/MR_reducer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="20" lean-forward="false" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/hive_remote.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="12" lean-forward="false" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/hive_remote.py">
+    <entry file="file://$PROJECT_DIR$/backend/algorithm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="19" column="71" lean-forward="true" selection-start-line="19" selection-start-column="71" selection-end-line="19" selection-end-column="71" />
+        <state relative-caret-position="198">
+          <caret line="9" column="39" lean-forward="true" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+          <folding>
+            <element signature="e#102#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/MR_mapper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MR_example.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="354">
+          <caret line="58" column="35" lean-forward="false" selection-start-line="58" selection-start-column="35" selection-end-line="58" selection-end-column="35" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

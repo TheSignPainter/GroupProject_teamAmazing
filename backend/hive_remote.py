@@ -18,11 +18,18 @@ def gen_maturity_date(matu):
 conn = hive.Connection(host="202.120.38.90", username="fourier",port=10086, auth="NOSASL",)
 cursor = conn.cursor()
 # An example on inserting data. Note: only "users" table supports that.
-command = 'INSERT INTO TABLE users VALUES ("Invoke","Invoke@sjtu.edu.cn","1234")'
+# command = 'CREATE TABLE users(id STRING, user_name STRING, email STRING, password STRING)' \
+#           'CLUSTERED BY(id) INTO 64 BUCKETS STORED AS ORC ' \
+#           'TBLPROPERTIES("transactional"="true",' \
+#           '  "compactor.mapreduce.map.memory.mb"="2048",' \
+#           '  "compactorthreshold.hive.compactor.delta.num.threshold"="4",' \
+#           '  "compactorthreshold.hive.compactor.delta.pct.threshold"="0.5"' \
+#           ')'
+command = "show tables"
 cursor.execute(command)
-print("insertion done.")
-# for result in cursor.fetchall():
-#      print(result)
+# print("insertion done.")
+for result in cursor.fetchall():
+     print(result)
 cursor.execute("select denomination,issue_start_date,dated_date,expiration_date,repayment_method,APR from bonds where bond_id='000696'")
 for result in cursor.fetchall():
     print(result)
