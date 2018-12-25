@@ -18,9 +18,9 @@ class Bond():
         self.coupon = float(self.ir * self.parValue) / frequency
         # 默认只有年付和半年付
         if frequency == 1:
-            self.payDate = [[startDate.month, startDate.day]]
+            self.payDate = [[maturity.month, maturity.day]]
         elif frequency == 2:
-            self.payDate = [[startDate.month, startDate.day], [(startDate.month+6)%12, startDate.day]]
+            self.payDate = [[maturity.month, maturity.day], [(maturity.month+6)%12, maturity.day]]
             if self.payDate[1][0] == 0:
                 self.payDate[1][0] = 12
             # paytime排序

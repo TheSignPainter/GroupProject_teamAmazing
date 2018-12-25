@@ -88,13 +88,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="am-g" style="margin-top: 4rem"> 
   <div class="am-u-lg-2 am-u-lg-push-2">
       <ul class="am-list">
-        <li><a href="#">债券估值</a></li>
-        <li><a href="#">到期收益率</a></li>
-        <li><a href="#">利率风险</a></li>
+        <li><a href="#" onclick="show_ytm()">到期收益率</a></li>
+        <li><a href="#" onclick="show_pricing()">债券估值</a></li>
+        <li><a href="#" onclick="show_ir_risk()">利率风险</a></li>
       </ul>
   </div>
   <!--Calculator-->
-  <div class="am-u-lg-6 am-u-lg-pull-2 calc" style="height: 50rem">
+  <div class="am-u-lg-6 am-u-lg-push-2 calc" style="height: 50rem">
+      <div id="blk-ytm">
     <div style="display: block"><b style="font-size: 2rem">到期收益率</b></div>
     <form class="form am-u-lg-push-2" style="margin-top: 3.5rem; line-height: 4rem; border-width: 2px">
          <div>
@@ -142,6 +143,114 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <input type="text" name="cal_result" id="cal_YTM_result" value="" disabled="disabled" class="text"> %
       </div>
     </div>
+      </div>
+
+    <div style="display: none" id="blk-pricing">
+    <div><b style="font-size: 2rem">债券估值</b></div>
+    <form class="form am-u-lg-push-2" style="margin-top: 3.5rem; line-height: 4rem; border-width: 2px">
+         <div>
+            <div class="am-input-group">
+                <label class="label" style="margin-right: 3.8rem;">到期收益率</label>
+                <input type="text" id="cal_pricing_ytm" class="text" /> %
+            </div>
+            <div class="am-input-group">
+                <label class="label" style="margin-right: 2.5rem;">债券单位面值</label>
+                <input type="text" id="cal_pricing_par" class="text" /> 元
+            </div>
+
+            <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'dd-mm-yyyy'}">
+              <label class="label" style="margin-right: 1.2rem;">债券购买交割日</label>
+              <input type="text" class="text" id="cal_pricing_buydate" readonly data-am-datepicker>
+                <input style="display: none" id="cal_pricing_buydate_">
+            </div>
+
+            <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'dd-mm-yyyy'}">
+              <label class="label" style="margin-right: 1.2rem;">债券到期兑付日</label>
+              <input type="text" class="text" id="cal_pricing_maturity" readonly data-am-datepicker>
+                <input style="display: none" id="cal_pricing_maturity_">
+            </div>
+
+           <div class="am-input-group">
+                <label class="label" style="margin-right: 1.2rem;">债券票面年利率</label>
+                <input type="text" id="cal_pricing_ir" class="text" /> %
+            </div>
+
+            <div class="am-input-group">
+                <label class="label" style="margin-right: 2.5rem;">利息支付频率</label>
+                  <input type="text" id="cal_pricing_frequency" class="text" /> 次/年
+            </div>
+
+        </div>
+        <div class="am-input-group" style="margin-left: 7rem">
+              <label class="label"></label>
+              <button class="am-btn am-btn-secondary am-btn-sm" type="button" onclick="calPricing()">计算</button>
+              <button class="am-btn am-btn-secondary am-btn-sm" id="btnReset" type="reset" style="margin-left: 2rem">清除</button>
+        </div>
+     </form>
+     <div class="result am-u-lg-push-2" style="margin-top: 1.2rem">
+      <div class="field">
+            <label class="label" style="margin-right: 4.8rem;">估值全价</label>
+            <input type="text" name="cal_result" id="cal_pricing_result_dirty" value="" disabled="disabled" class="text"> 元
+      </div>
+         <div class="field" style="margin-top: 1rem">
+            <label class="label" style="margin-right: 4.8rem;">估值净价</label>
+            <input type="text" name="cal_result" id="cal_pricing_result_clean" value="" disabled="disabled" class="text"> 元
+      </div>
+    </div>
+    </div>
+
+  <div id="blk-ir-risk" style="display: none">
+    <div ><b style="font-size: 2rem">利率风险</b></div>
+    <form class="form am-u-lg-push-2" style="margin-top: 3.5rem; line-height: 4rem; border-width: 2px">
+         <div>
+            <div class="am-input-group">
+                <label class="label" style="margin-right: 3.8rem;">到期收益率</label>
+                <input type="text" id="cal_risk_ytm" class="text" /> %
+            </div>
+            <div class="am-input-group">
+                <label class="label" style="margin-right: 2.5rem;">债券单位面值</label>
+                <input type="text" id="cal_risk_par" class="text" /> 元
+            </div>
+
+            <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'dd-mm-yyyy'}">
+              <label class="label" style="margin-right: 1.2rem;">债券购买交割日</label>
+              <input type="text" class="text" id="cal_risk_buydate" readonly data-am-datepicker>
+                <input style="display: none" id="cal_risk_buydate_">
+            </div>
+
+            <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'dd-mm-yyyy'}">
+              <label class="label" style="margin-right: 1.2rem;">债券到期兑付日</label>
+              <input type="text" class="text" id="cal_risk_maturity" readonly data-am-datepicker>
+                <input style="display: none" id="cal_risk_maturity_">
+            </div>
+
+           <div class="am-input-group">
+                <label class="label" style="margin-right: 1.2rem;">债券票面年利率</label>
+                <input type="text" id="cal_risk_ir" class="text" /> %
+            </div>
+
+            <div class="am-input-group">
+                <label class="label" style="margin-right: 2.5rem;">利息支付频率</label>
+                  <input type="text" id="cal_risk_frequency" class="text" /> 次/年
+            </div>
+
+        </div>
+        <div class="am-input-group" style="margin-left: 7rem">
+              <label class="label"></label>
+              <button class="am-btn am-btn-secondary am-btn-sm" type="button" onclick="calIRRisk()">计算</button>
+              <button class="am-btn am-btn-secondary am-btn-sm" id="btnReset" type="reset" style="margin-left: 2rem">清除</button>
+        </div>
+     </form>
+     <div class="result am-u-lg-push-2" style="margin-top: 1.2rem">
+      <div class="field">
+            <label class="label" style="margin-right: 4.8rem;">修正久期</label>
+            <input type="text" name="cal_result" id="cal_risk_result_1" value="" disabled="disabled" class="text">
+      </div>
+         <div class="field" style="margin-top: 1rem">
+            <label class="label" style="margin-right: 7.5rem;">凸性</label>
+            <input type="text" name="cal_result" id="cal_risk_result_2" value="" disabled="disabled" class="text">
+      </div>
+    </div>
   </div>
 
 </div>
@@ -162,6 +271,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--<![endif]-->
 <script src="assets/js/amazeui.min.js"></script>
 
+
+<script type="text/javascript">
+    function show_ytm() {
+        $('#blk-ytm').show();
+        $('#blk-ir-risk').hide();
+        $('#blk-pricing').hide();
+    }
+
+    function show_pricing() {
+        $('#blk-ytm').hide();
+        $('#blk-ir-risk').hide();
+        $('#blk-pricing').show();
+    }
+
+    function show_ir_risk() {
+        $('#blk-ytm').hide();
+        $('#blk-ir-risk').show();
+        $('#blk-pricing').hide();
+    }
+</script>
+
 <script type="text/javascript">
     Date.prototype.format = function(format)
     {
@@ -173,7 +303,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          "s+" : this.getSeconds(), //second
          "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
          "S" : this.getMilliseconds() //millisecond
-         }
+         };
          if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
          (this.getFullYear()+"").substr(4 - RegExp.$1.length));
          for(var k in o)if(new RegExp("("+ k +")").test(format))
@@ -193,18 +323,69 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $("#cal_YTM_maturity_").val(event.date.format("yyyy-MM-dd"));
     });
 
+    $('#cal_pricing_buydate').datepicker().
+      on('changeDate.datepicker.amui', function(event) {
+          $("#cal_pricing_buydate_").val(event.date.format("yyyy-MM-dd"));
+    });
+
+    $('#cal_pricing_maturity').datepicker().
+      on('changeDate.datepicker.amui', function(event) {
+          $("#cal_pricing_maturity_").val(event.date.format("yyyy-MM-dd"));
+    });
+
+    $('#cal_risk_buydate').datepicker().
+      on('changeDate.datepicker.amui', function(event) {
+          $("#cal_risk_buydate_").val(event.date.format("yyyy-MM-dd"));
+    });
+
+    $('#cal_risk_maturity').datepicker().
+      on('changeDate.datepicker.amui', function(event) {
+          $("#cal_risk_maturity_").val(event.date.format("yyyy-MM-dd"));
+    });
+
     function calYTM() {
         var buyPrice = $("#cal_YTM_cost").val();
         var parValue = $("#cal_YTM_par").val();
         var buyDate = $("#cal_YTM_buydate_").val();
         var maturity = $("#cal_YTM_maturity_").val();
         var ir = $("#cal_YTM_ir").val();
-        var frequency = $("#cal_YTM_frequency").val()
+        var frequency = $("#cal_YTM_frequency").val();
         $.post("/calculate", {type: 'ytm', buy_price: buyPrice, par_value: parValue, buy_date: buyDate,
         maturity: maturity, ir: ir, frequency: frequency}, function (data) {
             $("#cal_YTM_result").val(data);
         });
     }
+
+    function calPricing() {
+        var ytm = $("#cal_pricing_ytm").val();
+        var parValue = $("#cal_pricing_par").val();
+        var buyDate = $("#cal_pricing_buydate_").val();
+        var maturity = $("#cal_pricing_maturity_").val();
+        var ir = $("#cal_pricing_ir").val();
+        var frequency = $("#cal_pricing_frequency").val();
+        $.post("/calculate", {type: 'pricing', ytm: ytm, par_value: parValue, buy_date: buyDate,
+        maturity: maturity, ir: ir, frequency: frequency}, function (data) {
+            data = $.parseJSON(data);
+            $("#cal_pricing_result_dirty").val(data[0]);
+            $("#cal_pricing_result_clean").val(data[1]);
+        });
+    }
+
+    function calIRRisk() {
+        var ytm = $("#cal_risk_ytm").val();
+        var parValue = $("#cal_risk_par").val();
+        var buyDate = $("#cal_risk_buydate_").val();
+        var maturity = $("#cal_risk_maturity_").val();
+        var ir = $("#cal_risk_ir").val();
+        var frequency = $("#cal_risk_frequency").val();
+        $.post("/calculate", {type: 'risk', ytm: ytm, par_value: parValue, buy_date: buyDate,
+        maturity: maturity, ir: ir, frequency: frequency}, function (data) {
+            data = $.parseJSON(data);
+            $("#cal_risk_result_1").val(data[0]);
+            $("#cal_risk_result_2").val(data[1]);
+        });
+    }
+
 </script>
 
 </body>

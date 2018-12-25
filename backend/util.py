@@ -1,6 +1,6 @@
 import re
 import uuid
-from algorithm.algorithm import Bond
+from algorithm import Bond
 from datetime import date, datetime
 
 
@@ -17,10 +17,23 @@ def id_generator():
 def calculate_(form):
     type = form['type']
     if type == 'ytm':
-        bond = Bond(parValue=float(form['par_value']), buyDate=datetime.strptime(form['buy_date'], "%Y-%m-%d").date(),
-                    buyPrice=float(form['buy_price']), maturity=datetime.strptime(form['maturity'], "%Y-%m-%d").date(),
-                    ir=float(form['ir']), frequency=int(form['frequency']))
-        print(float(form['par_value']), datetime.strptime(form['buy_date'], "%Y-%m-%d").date(),
-              float(form['buy_price']), datetime.strptime(form['maturity'], "%Y-%m-%d").date(),
-              float(form['ir'])/100, int(form['frequency']))
-        return bond.computed_YTM
+        buy_date = datetime.strptime(form['buy_date'], "%Y-%m-%d").date()
+        maturity = datetime.strptime(form['maturity'], "%Y-%m-%d").date()
+        bond = Bond(parValue=float(form['par_value']), buyDate=buy_date,
+                    buyPrice=float(form['buy_price']), maturity=maturity,
+                    ir=float(form['ir'])/100, frequency=int(form['frequency']))
+        return round(bond.computed_YTM*100,4)
+    if type == 'pricing':
+        buy_date = datetime.strptime(form['buy_date'], "%Y-%m-%d").date()
+        maturity = datetime.strptime(form['maturity'], "%Y-%m-%d").date()
+        bond = Bond(yieldToMaturity=float(form['ytm'])/100, buyDate=buy_date,
+                    parValue=float(form['par_value']), maturity=maturity,
+                    ir=float(form['ir']) / 100, frequency=int(form['frequency']))
+        return round(bond.pv_dirty, 4), round(bond.pv_clean, 4)
+    if type == 'risk':
+        buy_date = datetime.strptime(form['buy_date'], "%Y-%m-%d").date()
+        maturity = datetime.strptime(form['maturity'], "%Y-%m-%d").date()
+        bond = Bond(yieldToMaturity=float(form['ytm'])/100, buyDate=buy_date,
+                    parValue=float(form['par_value']), maturity=maturity,
+                    ir=float(form['ir']) / 100, frequency=int(form['frequency']))
+        return round(bond.modifiedD, 4), round(bond.convexity, 4)

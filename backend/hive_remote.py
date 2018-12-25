@@ -1,7 +1,7 @@
 from pyhive import hive
 #import pandas as pd
 import sys
-from algorithm.algorithm import Bond
+from algorithm import Bond
 import datetime
 import re
 from util import id_generator
@@ -16,7 +16,7 @@ def gen_maturity_date(matu):
     return datetime.date(datetime.datetime.now().year, int(splt[0]), int(splt[1]))
 
 
-
+'''
 conn = hive.Connection(host="202.120.38.90", port=10086, auth="NOSASL")
 
 cursor = conn.cursor()
@@ -37,7 +37,7 @@ cursor.execute("select denomination,issue_start_date,dated_date,expiration_date,
 for result in cursor.fetchall():
     print(result)
     bond_instance = Bond(parValue=result[0], buyDate=datetime.datetime.now().date(), startDate=date_tuple(result[1]),maturity=gen_maturity_date(result[2]),frequency=result[4],ir=result[5])
-
+'''
 
 def getQueryResults(q):
     conn = hive.Connection(host="202.120.38.90", port=10086, auth="NOSASL")
@@ -166,4 +166,4 @@ cursor.close()
 conn.commit()
 conn.close()'''
 #print_all_users()
-#print(getSubscribe_('3d93314c'))
+#(getSubscribe_('3d93314c'))

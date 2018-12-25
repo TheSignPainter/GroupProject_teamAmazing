@@ -155,7 +155,10 @@ def addSubscribe():
 @app.route('/calculate', methods=['GET','POST'])
 def calculate():
     if request.method == 'POST':
-        return str(calculate_(request.form))
+        if request.form['type'] == 'ytm':
+            return str(calculate_(request.form))
+        elif request.form['type'] == 'pricing' or 'risk':
+            return json.dumps(calculate_(request.form), ensure_ascii=False)
 
 
 if __name__ == "__main__":
