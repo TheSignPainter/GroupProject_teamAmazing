@@ -12,9 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <meta http-equiv="Cache-Control" content="no-siteapp" />
   <link rel="alternate icon" type="image/png" href="assets/i/amazing-icon.png">
   <link rel="stylesheet" href="assets/css/amazeui.min.css"/>
-  <script src="assets/js/echarts.min.js"></script>
-  <script type="text/javascript" src="assets/js/calendar.js"></script>
-  <script type="text/javascript" src="assets/js/calcbond.js"></script>
+
   <style>
     .get {
         background: #1E5B94;
@@ -29,22 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       display: inline-block;
       margin-bottom: 0;
     }
-    
-    .my-head {
-      margin-top: 40px;
-      text-align: center;
-    }
 
-    .my-button {
-      position: fixed;
-      top: 0;
-      right: 0;
-      border-radius: 0;
-    }
-    .my-sidebar {
-      padding-right: 0;
-      border-right: 1px solid #eeeeee;
-    }
     .footer p {
       color: #7f8c8d;
       margin: 0;
@@ -52,20 +35,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       text-align: center;
       background: #2d3e50;
     }
-    .calc .calendar .btn {
-      position: absolute;
-      right: 3px;
-      top: 3px;
-      width: 16px;
-      height: 15px;
-      border: none;
-      cursor: pointer;
-      background: url(assets/i/sidemenu.png) no-repeat -119px -107px;
-    }
   </style>
 </head>
 <body>
-<iframe id="L_DateLayer" name="L_DateLayer" scrolling="no" frameborder="0" style="position: absolute; width: 159px; height: 250px; z-index: 9999; display: none; top: 553px; left: 499px;" src="assets/calendar.html"></iframe>
 <header class="am-topbar am-topbar-fixed-top">
   <div class="am-container">
     <h1 class="am-topbar-brand">
@@ -124,54 +96,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!--Calculator-->
   <div class="am-u-lg-6 am-u-lg-pull-2 calc" style="height: 50rem">
     <div style="display: block"><b style="font-size: 2rem">到期收益率</b></div>
-    <form class="form am-u-lg-push-2" style="margin-top: 3.5rem; line-height: 4rem; border-width: 2px"> 
-         <div id="c0">
-            <div class="field">
+    <form class="form am-u-lg-push-2" style="margin-top: 3.5rem; line-height: 4rem; border-width: 2px">
+         <div>
+            <div class="am-input-group">
                 <label class="label" style="margin-right: 2.5rem;">债券单元成本</label>
-                <input type="text" name="cal_cost_0" id="cal_cost_0" class="text" /> 元
+                <input type="text" id="cal_YTM_cost" class="text" /> 元
             </div>
-            <div class="field">
+            <div class="am-input-group">
                 <label class="label" style="margin-right: 2.5rem;">债券单位面值</label>
-                <input type="text" name="cal_price_0" id="cal_price_0" class="text" /> 元
+                <input type="text" id="cal_YTM_par" class="text" /> 元
             </div>
 
-            <div class="field">
-                <label class="label" style="margin-right: 1.2rem;">债券购买交割日</label>
-                <div class="calendar" style="display: inline;width: 10rem">
-                    <input type="text" name="cal_buyday_0" id="cal_buyday_0" class="text" />
-                    <span class="btn" style="right: 26.5rem;top: 10.4rem;" onclick="MyCalendar.SetDate(this,$('cal_buyday_0'))"></span>
-                </div>
+            <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'dd-mm-yyyy'}">
+              <label class="label" style="margin-right: 1.2rem;">债券购买交割日</label>
+              <input type="text" class="text" id="cal_YTM_buydate" readonly data-am-datepicker>
+                <input style="display: none" id="cal_YTM_buydate_">
             </div>
 
-            <div class="field">
-                <label class="label" style="margin-right: 1.2rem;">债券到期兑付日</label>
-                <div class="calendar" style="display: inline;width: 10rem">
-                    <input type="text" name="cal_sellday_0" id="cal_sellday_0" class="text" />
-                    <span class="btn" style="right: 26.5rem;top: 14.8rem;" onclick="MyCalendar.SetDate(this,$('cal_sellday_0'))"></span><!--50.5-->
-                </div>
+            <div class="am-input-group am-datepicker-date" data-am-datepicker="{format: 'dd-mm-yyyy'}">
+              <label class="label" style="margin-right: 1.2rem;">债券到期兑付日</label>
+              <input type="text" class="text" id="cal_YTM_maturity" readonly data-am-datepicker>
+                <input style="display: none" id="cal_YTM_maturity_">
             </div>
             
-           <div class="field">
-                <label class="label" for="cal_rate_1" style="margin-right: 1.2rem;">债券票面年利率</label>
-                <input type="text" name="cal_rate_1" id="cal_rate_1" class="text" /> %
+           <div class="am-input-group">
+                <label class="label" style="margin-right: 1.2rem;">债券票面年利率</label>
+                <input type="text" id="cal_YTM_ir" class="text" /> %
             </div>
 
-            <div class="field">
+            <div class="am-input-group">
                 <label class="label" style="margin-right: 2.5rem;">利息支付频率</label>
-                <input type="text" name="cal_freq_2" id="cal_freq_2" class="text" /> 次/年
+                  <input type="text" id="cal_YTM_frequency" class="text" /> 次/年
             </div>
 
         </div>
-        <div class="field" style="padding-left: 7rem">
+        <div class="am-input-group" style="margin-left: 7rem">
               <label class="label"></label>
-              <button class="am-btn am-btn-secondary am-btn-sm" onclick="calTimWinBond()">计算</button>
+              <button class="am-btn am-btn-secondary am-btn-sm" type="button" onclick="calYTM()">计算</button>
               <button class="am-btn am-btn-secondary am-btn-sm" id="btnReset" type="reset" style="margin-left: 2rem">清除</button>
         </div>
      </form>
-     <div class="result" style="padding-left: 10.5rem; padding-top: 36rem"><!--14.5-->
+     <div class="result am-u-lg-push-2" style="margin-top: 1.2rem">
       <div class="field">
-            <label class="label" style="margin-right: 3.8rem">到期收益率</label>
-            <input type="text" name="cal_result" id="cal_result" value="" disabled="disabled" class="text"> %
+            <label class="label" style="margin-right: 3.5rem;">到期收益率</label>
+            <input type="text" name="cal_result" id="cal_YTM_result" value="" disabled="disabled" class="text"> %
       </div>
     </div>
   </div>
@@ -194,6 +162,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!--<![endif]-->
 <script src="assets/js/amazeui.min.js"></script>
 
+<script type="text/javascript">
+    Date.prototype.format = function(format)
+    {
+         var o = {
+         "M+" : this.getMonth()+1, //month
+         "d+" : this.getDate(),    //day
+         "h+" : this.getHours(),   //hour
+         "m+" : this.getMinutes(), //minute
+         "s+" : this.getSeconds(), //second
+         "q+" : Math.floor((this.getMonth()+3)/3),  //quarter
+         "S" : this.getMilliseconds() //millisecond
+         }
+         if(/(y+)/.test(format)) format=format.replace(RegExp.$1,
+         (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+         for(var k in o)if(new RegExp("("+ k +")").test(format))
+         format = format.replace(RegExp.$1,
+         RegExp.$1.length==1 ? o[k] :
+         ("00"+ o[k]).substr((""+ o[k]).length));
+         return format;
+    };
+
+    $('#cal_YTM_buydate').datepicker().
+      on('changeDate.datepicker.amui', function(event) {
+          $("#cal_YTM_buydate_").val(event.date.format("yyyy-MM-dd"));
+    });
+
+    $('#cal_YTM_maturity').datepicker().
+      on('changeDate.datepicker.amui', function(event) {
+          $("#cal_YTM_maturity_").val(event.date.format("yyyy-MM-dd"));
+    });
+
+    function calYTM() {
+        var buyPrice = $("#cal_YTM_cost").val();
+        var parValue = $("#cal_YTM_par").val();
+        var buyDate = $("#cal_YTM_buydate_").val();
+        var maturity = $("#cal_YTM_maturity_").val();
+        var ir = $("#cal_YTM_ir").val();
+        var frequency = $("#cal_YTM_frequency").val()
+        $.post("/calculate", {type: 'ytm', buy_price: buyPrice, par_value: parValue, buy_date: buyDate,
+        maturity: maturity, ir: ir, frequency: frequency}, function (data) {
+            $("#cal_YTM_result").val(data);
+        });
+    }
+</script>
 
 </body>
 </html>

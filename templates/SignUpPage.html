@@ -57,15 +57,16 @@
 </div>
 <div class="am-g login">
   <div class="am-u-lg-6 am-u-md-8 am-u-sm-centered login-input">
-    <form method="post" class="am-form">
+    <form method="{{ method }}" action="{{ action }}" class="am-form">
+      {{ form.hidden_tag() }}
       <label for="username">Username</label>
-      <input type="text" name="" id="username" value="">
+      <input type="text" name="username" id="username" value="">
       <br>
       <label for="email">Email address</label>
-      <input type="email" name="" id="email" value="">
+      <input type="email" name="email" id="email" value="">
       <br>  
       <label for="password">Password</label>
-      <input type="password" name="" id="password" value="">
+      <input type="password" name="password" id="password" value="">
       <br>
       <div class="am-cf">
         <input type="submit" name="" value="Create an account" class="am-btn am-btn-primary am-btn-sm am-fl am-u-sm-centered" style="border-radius: 0.25em;">
