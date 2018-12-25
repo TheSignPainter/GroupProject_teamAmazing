@@ -23,7 +23,7 @@
 
 <header class="am-topbar am-topbar-inverse admin-header">
   <div class="am-topbar-brand">
-    <strong>Amazing</strong> <small>用户后台</small>
+      <a href="/"><strong>Amazing</strong></a> <small>用户后台</small>
   </div>
 
   <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
@@ -31,15 +31,15 @@
   <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
 
     <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
-      <li><a href="javascript:;"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
+      <li><a href="/oops"><span class="am-icon-envelope-o"></span> 收件箱 <span class="am-badge am-badge-warning">5</span></a></li>
       <li class="am-dropdown" data-am-dropdown>
         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
           <span class="am-icon-users"></span> 管理员 <span class="am-icon-caret-down"></span>
         </a>
         <ul class="am-dropdown-content">
-          <li><a href="#"><span class="am-icon-user"></span> 资料</a></li>
-          <li><a href="#"><span class="am-icon-cog"></span> 设置</a></li>
-          <li><a href="#"><span class="am-icon-power-off"></span> 退出</a></li>
+          <li><a href="/admin/Detail"><span class="am-icon-user"></span> 资料</a></li>
+          <li><a href="/oops"><span class="am-icon-cog"></span> 设置</a></li>
+          <li><a href="/logout"><span class="am-icon-power-off"></span> 退出</a></li>
         </ul>
       </li>
     </ul>
@@ -54,7 +54,7 @@
         <li><a href="/admin"><span class="am-icon-home"></span> 首页</a></li>
         <li><a href="/admin/Detail"><span class="am-icon-check"></span> 个人资料</a></li>
         <li><a href="/admin/Book"><span class="am-icon-th"></span> 订阅</a></li>
-        <li><a href="/admin/News"><span class="am-icon-table"></span> 最新行情</a></li>
+        <li><a href="/oops"><span class="am-icon-table"></span> 最新行情</a></li>
         <li><a href="/logout"><span class="am-icon-sign-out"></span> 注销</a></li>
       </ul>
 
@@ -66,7 +66,7 @@
   <div class="admin-content">
     <div class="admin-content-body">
       <div class="am-cf am-padding">
-        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong> / <small>一些常用模块</small></div>
+        <div class="am-fl am-cf"><strong class="am-text-primary am-text-lg">首页</strong></div>
       </div>
 
       <ul class="am-avg-sm-1 am-avg-md-4 am-margin am-padding am-text-center admin-content-list ">
@@ -76,7 +76,7 @@
         <li><a href="#" class="am-text-secondary"><span class="am-icon-btn am-icon-user-md"></span><br/>在线用户<br/>3000</a></li>
       </ul>
 
-      <div class="am-g">
+      <!--div class="am-g">
         <div class="am-u-sm-12">
           <table class="am-table am-table-bd am-table-striped admin-content-table">
             <thead>
@@ -152,11 +152,11 @@
             </tbody>
           </table>
         </div>
-      </div>
+      </div-->
 
       <div class="am-g">
         <div class="am-u-md-6">
-          <div class="am-panel am-panel-default">
+          <!--div class="am-panel am-panel-default">
             <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-1'}">文件上传<span class="am-icon-chevron-down am-fr" ></span></div>
             <div class="am-panel-bd am-collapse am-in" id="collapse-panel-1">
               <ul class="am-list admin-content-file">
@@ -217,10 +217,10 @@
               </table>
             </div>
           </div>
-        </div>
+        </div-->
 
-        <div class="am-u-md-6">
-          <div class="am-panel am-panel-default">
+        <!--div class="am-u-md-6">
+          <div-- class="am-panel am-panel-default">
             <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-4'}">任务 task<span class="am-icon-chevron-down am-fr" ></span></div>
             <div id="collapse-panel-4" class="am-panel-bd am-collapse am-in">
               <ul class="am-list admin-content-task">
@@ -262,7 +262,7 @@
                 </li>
               </ul>
             </div>
-          </div>
+          </div-->
 
           <div class="am-panel am-panel-default">
             <div class="am-panel-hd am-cf" data-am-collapse="{target: '#collapse-panel-3'}">最近留言<span class="am-icon-chevron-down am-fr" ></span></div>
@@ -272,9 +272,9 @@
                   <a href="#"><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
                   <div class="am-comment-main">
                     <header class="am-comment-hd">
-                      <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>
+                      <div class="am-comment-meta"><a href="#" class="am-comment-author">长者</a> 评论于 <time>2018-12-25 15:30</time></div>
                     </header>
-                    <div class="am-comment-bd"><p>遵循 “移动优先（Mobile First）”、“渐进增强（Progressive enhancement）”的理念，可先从移动设备开始开发网站，逐步在扩展的更大屏幕的设备上，专注于最重要的内容和交互，很好。</p>
+                    <div class="am-comment-bd"><p>Amazing这个系统啊，Exciting!</p>
                     </div>
                   </div>
                 </li>
@@ -283,9 +283,9 @@
                   <a href="#"><img src="http://s.amazeui.org/media/i/demos/bw-2014-06-19.jpg?imageView/1/w/96/h/96" alt="" class="am-comment-avatar" width="48" height="48"></a>
                   <div class="am-comment-main">
                     <header class="am-comment-hd">
-                      <div class="am-comment-meta"><a href="#" class="am-comment-author">某人</a> 评论于 <time>2014-7-12 15:30</time></div>
+                      <div class="am-comment-meta"><a href="#" class="am-comment-author">tql</a> 评论于 <time>2018-12-25 15:29</time></div>
                     </header>
-                    <div class="am-comment-bd"><p>有效减少为兼容旧浏览器的臃肿代码；基于 CSS3 的交互效果，平滑、高效。AMUI专注于现代浏览器（支持HTML5），不再为过时的浏览器耗费资源，为更有价值的用户提高更好的体验。</p>
+                    <div class="am-comment-bd"><p>+1s</p>
                     </div>
                   </div>
                 </li>
@@ -294,10 +294,10 @@
               <ul class="am-pagination am-fr admin-content-pagination">
                 <li class="am-disabled"><a href="#">&laquo;</a></li>
                 <li class="am-active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
+                <!--li><a href="#">2</a></li>
                 <li><a href="#">3</a></li>
                 <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
+                <li><a href="#">5</a></li-->
                 <li><a href="#">&raquo;</a></li>
               </ul>
             </div>
@@ -308,7 +308,7 @@
 
     <footer class="admin-content-footer">
       <hr>
-      <p class="am-padding-left">© 2014 AllMobilize, Inc. Licensed under MIT license.</p>
+      <p class="am-padding-left">2018 @ Amazing Team, SJTU</p>
     </footer>
   </div>
   <!-- content end -->

@@ -10,6 +10,7 @@ from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import Length,DataRequired,Optional
 from user import User_Dal, User_Signup
 from util import calculate_
+import time
 
 PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
 app = Flask(__name__,
@@ -44,13 +45,14 @@ def toplevel_static(folder, filename):
 
 @app.route('/')
 def index():
-    print(current_user.is_authenticated)
+    #print(current_user.is_authenticated)
     return render_template("mainpage.html")
 
 
 @app.route('/Yieldcurve')
 def yieldcurve():
-    return render_template("yieldCurvePage.html")
+    date = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+    return render_template("yieldCurvePage.html", update_date=date)
 
 
 @app.route('/calculator')
@@ -70,6 +72,8 @@ def bondDetail():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect('/')
     form = LoginForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -148,8 +152,8 @@ def admin_news():
 @app.route('/addSubscribe', methods=['GET','POST'])
 def addSubscribe():
     if request.method == 'POST':
-        addSubscribe_(request.form['user_id'], request.form['bond_id'])
-        return "success"
+        result = addSubscribe_(request.form['user_id'], request.form['bond_id'])
+        return result
 
 
 @app.route('/calculate', methods=['GET','POST'])
@@ -159,6 +163,11 @@ def calculate():
             return str(calculate_(request.form))
         elif request.form['type'] == 'pricing' or 'risk':
             return json.dumps(calculate_(request.form), ensure_ascii=False)
+
+
+@app.route('/oops')
+def under_construction():
+    return render_template("error.html")
 
 
 if __name__ == "__main__":

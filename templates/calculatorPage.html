@@ -53,25 +53,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li><a href="/">首页</a></li>
         <li><a href="/Yieldcurve">收益率曲线</a></li>
         <li class="am-active"><a href="#">计算器</a></li>
-        <li><a href="#">Bond Gallery</a></li>
+        <li><a href="/oops">Bond Gallery</a></li>
         <li class="am-dropdown" data-am-dropdown>
           <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
             关于我们 <span class="am-icon-caret-down"></span>
           </a>
           <ul class="am-dropdown-content">
-            <li><a href="#">模型</a></li>
-            <li><a href="#">blog</a></li>
+            <li><a href="/oops">模型</a></li>
+            <li><a href="/oops">blog</a></li>
           </ul>
         </li>
       </ul>
 
+      {% if not current_user.is_authenticated %}
       <div class="am-topbar-right">
-        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-pencil"></span> Sign in</button>
+        <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm" onclick="javascript:window.location.href='/login'"><span class="am-icon-pencil"></span> Sign in</button>
       </div>
 
       <div class="am-topbar-right">
-        <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> Sign up</button>
+        <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" onclick="javascript:window.location.href='/signup'"><span class="am-icon-user"></span> Sign up</button>
       </div>
+        {% else %}
+        <div class="am-topbar-right" style="margin-top: 1rem">
+        <summary class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-user"></span> {{ current_user.username }} <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="/admin"><span class="am-icon-cog"></span> 我的后台</a></li>
+          <li><a href="/logout"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </summary>
+      </div>
+        {% endif %}
     </div>
   </div>
 </header>

@@ -4,7 +4,8 @@ import sys
 from algorithm import Bond
 import datetime
 import re
-from util import id_generator
+from util import id_generator, yieldtomaturity
+import json
 
 def to_date(date_string):
     lst=date_string.split('-')
@@ -58,15 +59,22 @@ def getBondInfoDetail(q):
         "select * from bonds where bond_id = '{query}' limit 1".format(
             query=q))
     data = cursor.fetchall()[0]
-    bond_instance = Bond(yieldToMaturity=0.055, parValue=data[6], buyDate=datetime.datetime.now().date(), startDate=to_date(data[14].split('-')[0]+'-'+('-'.join(data[11].split('.')))),
-                         maturity=to_date(data[12]), frequency=data[21], ir=data[9]/100)
-    result = {'FullName': data[0], 'Code': data[1], 'ShortName': data[2], 'StartDate': data[14], 'Range': data[8], 'IR': data[9],
-              'IRDate': data[11], 'DirtyPrice': bond_instance.pv_dirty, 'CleanPrice': bond_instance.pv_clean, 'YTM': bond_instance.yieldToMaturity*100,
-              'Duration': bond_instance.duration, 'Convexity': bond_instance.convexity}
     cursor.close()
     conn.commit()
     conn.close()
-    return result
+    remainingYear = int(data[12].split('-')[0]) - int(datetime.datetime.now().date().year)
+    remainingDay = to_date(data[12]) - datetime.datetime.now().date()
+    if remainingDay.days < 0 or data[20] != '0':
+        return {'FullName': data[0], 'Code': data[1], 'ShortName': data[2], 'StartDate': data[14], 'Range': data[8], 'IR': data[9],
+              'IRDate': data[11], 'DirtyPrice': '-', 'CleanPrice': '-', 'YTM': '-',
+              'Duration': '-', 'Convexity': '-'}
+    else:
+        yield2maturity = yieldtomaturity(remainingYear)
+        bond_instance = Bond(yieldToMaturity=float(yield2maturity)/100, parValue=data[6], buyDate=datetime.datetime.now().date(), maturity=to_date(data[12]), frequency=data[21], ir=data[9]/100)
+        result = {'FullName': data[0], 'Code': data[1], 'ShortName': data[2], 'StartDate': data[14], 'Range': data[8], 'IR': data[9],
+                  'IRDate': data[11], 'DirtyPrice': bond_instance.pv_dirty, 'CleanPrice': bond_instance.pv_clean, 'YTM': bond_instance.yieldToMaturity*100,
+                  'Duration': bond_instance.duration, 'Convexity': bond_instance.convexity}
+        return result
 
 
 def getUser(username, password):
@@ -136,21 +144,38 @@ def addSubscribe_(user_id, bond_id):
     cursor = conn.cursor()
     cursor.execute("select status from subscribe where user_id='{user_id}' and bond_id = '{bond_id}'".format(user_id=user_id, bond_id = bond_id))
     judge = cursor.fetchall()
-    if (len(judge) == 0):
-        cursor.execute(
-        "insert into subscribe (user_id, bond_id, status) VALUES ('{user_id}', '{bond_id}', '1')".format(
-            user_id=user_id, bond_id=bond_id))
-    elif (judge[0]=='0'):
-        cursor.execute("update subscribe set status = '1' where user_id='{user_id}' and bond_id='{bond_id}'".format(user_id=user_id, bond_id=bond_id))
+    result = 'fail'
+    try:
+        if (len(judge) == 0):
+            cursor.execute(
+            "insert into subscribe (user_id, bond_id, status) VALUES ('{user_id}', '{bond_id}', '1')".format(
+                user_id=user_id, bond_id=bond_id))
+            result = 'success'
+        elif (judge[0]=='0'):
+            cursor.execute("update subscribe set status = '1' where user_id='{user_id}' and bond_id='{bond_id}'".format(user_id=user_id, bond_id=bond_id))
+            result = 'success'
+        else:
+            result = 'existed'
+    except:
+        result = 'fail'
     cursor.close()
     conn.commit()
     conn.close()
+    return result
 
 
 def getSubscribe_(user_id):
     conn = hive.Connection(host="202.120.38.90", port=10086, auth="NOSASL", username='fourier')
     cursor = conn.cursor()
-    cursor.execute("select company_name, abbrev, bonds.bond_id from subscribe inner join bonds on subscribe.bond_id = bonds.bond_id where user_id='{user_id}' and status = '1'".format(user_id=user_id))
+    #cursor.execute("select company_name, abbrev, bonds.bond_id from subscribe inner join bonds on subscribe.bond_id = bonds.bond_id where user_id='{user_id}' and status = '1'".format(user_id=user_id))
+    #cursor.execute("SELECT company_name, abbrev, bonds.bond_id FROM subscribe LEFT OUTER JOIN bonds ON (subscribe.bond_id=bonds.bond_id AND subscribe.user_id='{user_id}' AND subscribe.status='1')".format(user_id=user_id))
+    #cursor.execute("select company_name, abbrev, bonds.bond_id from bonds where bonds.bond_id in (select bond_id from subscribe where user_id='{user_id}' and status = '1')".format(user_id=user_id))
+    cursor.execute("select bond_id from subscribe where user_id='{user_id}' and status = '1'".format(
+            user_id=user_id))
+    data = cursor.fetchall()
+    data = json.dumps([d[0] for d in data], ensure_ascii=False)
+    data = '(' + data[1:-1] + ')'
+    cursor.execute("select company_name, abbrev, bond_id from bonds where bond_id in "+data)
     data = cursor.fetchall()
     cursor.close()
     conn.commit()
@@ -158,12 +183,13 @@ def getSubscribe_(user_id):
     return data
 
 
+
 '''conn = hive.Connection(host="202.120.38.90", port=10086, username='fourier', auth="NOSASL")
 cursor = conn.cursor()
-cursor.execute('select * from subscribe')
+cursor.execute("SELECT company_name, abbrev, bonds.bond_id FROM subscribe INNER JOIN bonds ON (subscribe.bond_id=bonds.bond_id AND subscribe.user_id='c3be8630' AND subscribe.status='1')")
 print(cursor.fetchall())
 cursor.close()
 conn.commit()
 conn.close()'''
 #print_all_users()
-#(getSubscribe_('3d93314c'))
+#print(getSubscribe_('c3be8630'))

@@ -89,18 +89,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <li class="am-active"><a href="#">首页</a></li>
         <li><a href="/Yieldcurve">收益率曲线</a></li>
         <li><a href="/calculator">计算器</a></li>
-        <li><a href="#">Bond Gallery</a></li>
+        <li><a href="/oops">Bond Gallery</a></li>
         <li class="am-dropdown" data-am-dropdown>
           <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
             关于我们 <span class="am-icon-caret-down"></span>
           </a>
           <ul class="am-dropdown-content">
-            <li><a href="#">模型</a></li>
-            <li><a href="#">blog</a></li>
+            <li><a href="/oops">模型</a></li>
+            <li><a href="/oops">blog</a></li>
           </ul>
         </li>
       </ul>
-
+        {% if not current_user.is_authenticated %}
       <div class="am-topbar-right">
         <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm" onclick="javascript:window.location.href='/login'"><span class="am-icon-pencil"></span> Sign in</button>
       </div>
@@ -108,6 +108,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="am-topbar-right">
         <button class="am-btn am-btn-primary am-topbar-btn am-btn-sm" onclick="javascript:window.location.href='/signup'"><span class="am-icon-user"></span> Sign up</button>
       </div>
+        {% else %}
+        <div class="am-topbar-right" style="margin-top: 1rem">
+        <summary class="am-dropdown" data-am-dropdown>
+        <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+          <span class="am-icon-user"></span> {{ current_user.username }} <span class="am-icon-caret-down"></span>
+        </a>
+        <ul class="am-dropdown-content">
+          <li><a href="/admin"><span class="am-icon-cog"></span> 我的后台</a></li>
+          <li><a href="/logout"><span class="am-icon-power-off"></span> 退出</a></li>
+        </ul>
+      </summary>
+      </div>
+        {% endif %}
     </div>
   </div>
 </header>
@@ -119,13 +132,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     <div class="am-u-lg-12" style="margin-top: 5rem">
     
-        <div class="am-u-lg-6 am-u-lg-centered notify-latest">
+        <div class="am-u-lg-6 am-u-lg-centered notify-latest" >
           <div class="am-u-lg-8 am-u-lg-push-1 am-text-right subscribe-field">
-            <input class="am-form-field am-round" id="search" type="" required="" placeholder="Bond Name/Bond code">
+            <input class="am-form-field am-round" id="search" type="" required="" placeholder="Bond Name/Bond code" style="margin-bottom: 2rem">
             <input class="am-form-field am-round" id="search-handle" type="" required="" placeholder="Bond Name/Bond code" style="display: none">
           </div>
           <div class="am-u-lg-2 am-u-lg-pull-1">
-            <button id="subscribe-submit" class="am-btn am-btn-secondary am-btn-block am-round" onclick="search()">Search</button>
+            <button id="subscribe-submit" class="am-btn am-btn-secondary am-round" onclick="search()">Search</button>
           </div>
         </div>
     
@@ -227,7 +240,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <footer class="footer">
-  <p>© 2018. by the Amazing Team.</p>
+  <p>2018 @ Amazing Team, SJTU</p>
 </footer>
 
 <script src="assets/js/amazeui.min.js"></script>
@@ -269,18 +282,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
            $("#info-range").html(data['Range']);
            $("#info-ir").html(data['IR'].toFixed(2));
            $("#info-irdate").html(data['IRDate']);
-           $("#info-dirtyprice").html(data['DirtyPrice'].toFixed(4));
-           $("#info-cleanprice").html(data['CleanPrice'].toFixed(4));
-           $("#info-ytm").html(data['YTM'].toFixed(4));
-           $("#info-duration").html(data['Duration'].toFixed(4));
-           $("#info-convexity").html(data['Convexity'].toFixed(4));
+           if (data['DirtyPrice'] == '-') {
+               $("#info-dirtyprice").html(data['DirtyPrice']);
+               $("#info-cleanprice").html(data['CleanPrice']);
+               $("#info-ytm").html(data['YTM']);
+               $("#info-duration").html(data['Duration']);
+               $("#info-convexity").html(data['Convexity']);
+           }
+           else {
+               $("#info-dirtyprice").html(data['DirtyPrice'].toFixed(4));
+               $("#info-cleanprice").html(data['CleanPrice'].toFixed(4));
+               $("#info-ytm").html(data['YTM'].toFixed(4));
+               $("#info-duration").html(data['Duration'].toFixed(4));
+               $("#info-convexity").html(data['Convexity'].toFixed(4));
+           }
            $("#info-block").show();
        })
    }
    
    function subscribe() {
        {% if current_user.is_authenticated%}
-       $.post('/addSubscribe', {user_id: '{{current_user.id}}', bond_id: $("#info-code").html()});
+       $.post('/addSubscribe', {user_id: '{{current_user.id}}', bond_id: $("#info-code").html()}, function (data) {
+           if (data=='success'){
+               alert("订阅成功！")
+           }
+           else if (data=='fail') {
+               alert("订阅失败！")
+           }
+           else if (data=='existed') {
+               alert("该订阅已存在！")
+           }
+       });
        {% else %}
        window.location.href = '/login';
        {% endif %}
