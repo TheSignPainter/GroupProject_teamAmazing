@@ -1,10 +1,10 @@
 from pyhive import hive
 #import pandas as pd
 import sys
+from util import id_generator
 from algorithm.algorithm import Bond
 import datetime
 import re
-from util import id_generator
 
 def to_date(date_string):
     lst=date_string.split('-')
@@ -28,7 +28,7 @@ cursor = conn.cursor()
 #           '  "compactorthreshold.hive.compactor.delta.num.threshold"="4",' \
 #           '  "compactorthreshold.hive.compactor.delta.pct.threshold"="0.5"' \
 #           ')'
-command = "show tables"
+command = 'show tables'
 cursor.execute(command)
 # print("insertion done.")
 for result in cursor.fetchall():
@@ -36,7 +36,7 @@ for result in cursor.fetchall():
 cursor.execute("select denomination,issue_start_date,dated_date,expiration_date,repayment_method,APR from bonds where bond_id='000696'")
 for result in cursor.fetchall():
     print(result)
-    bond_instance = Bond(parValue=result[0], buyDate=datetime.datetime.now().date(), startDate=date_tuple(result[1]),maturity=gen_maturity_date(result[2]),frequency=result[4],ir=result[5])
+    bond_instance = Bond(parValue=result[0], buyDate=datetime.datetime.now().date(), startDate=to_date(result[1]),maturity=gen_maturity_date(result[2]),frequency=result[4],ir=result[5])
 
 
 def getQueryResults(q):
@@ -165,5 +165,6 @@ print(cursor.fetchall())
 cursor.close()
 conn.commit()
 conn.close()'''
-#print_all_users()
-#print(getSubscribe_('3d93314c'))
+# print_all_users()
+# print(getSubscribe_('3d93314c'))
+# addUser("Invoke3","Invoke@sjtu.edu.cn","123456")

@@ -4,6 +4,7 @@ import sys
 import datetime
 import re
 import os
+import time
 
 """
 Logic: 
@@ -45,7 +46,8 @@ for result in cursor.fetchall():
     s = ""
     for item in result:
         s+=str(item)+"\t"
-    l.append(s+"\n")
+    for i in range(75):
+        l.append(s+"\n")
     # print("buyDate=",datetime.datetime.now().date(), "startDate=",date_tuple(result[1]),"maturity=",gen_maturity_date(result[2]))
     # if result[4]==1 or result[4]==2 :
     #     try:
@@ -56,9 +58,14 @@ for result in cursor.fetchall():
         # except:
         #     continue
 f.writelines(l)
+t1 = time.time()
 output_path = "hd_output"
+os.system("hadoop fs -rm tmp/tmp.txt")
+os.system("hadoop fs -put tmp.txt tmp")
 os.system("hadoop fs -rm -r %s" % output_path)
 os.system('hadoop jar /home/fourier/Invoke/hadoop/share/hadoop/tools/lib/hadoop-streaming-2.9.2.jar -D stream.non.zero.exit.is.failure=false -files backend -input tmp/tmp.txt  -output hd_output -mapper "python3 backend/MR_mapper.py" -reducer "python3 backend/MR_reducer.py"')
 out_str = os.popen('hadoop fs -cat %s/part-00000' % output_path).read()
+print("---------------------------------")
 print("This is python output.")
 print(out_str)
+print("time used:", time.time()-t1)
