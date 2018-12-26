@@ -10,7 +10,7 @@ from wtforms import StringField, PasswordField, BooleanField
 from wtforms.validators import Length,DataRequired,Optional
 from user import User_Dal, User_Signup
 from util import calculate_
-import time
+from datetime import datetime, date, timedelta
 
 PROJECT_PATH = os.path.dirname(os.path.realpath(__file__))
 app = Flask(__name__,
@@ -51,8 +51,9 @@ def index():
 
 @app.route('/Yieldcurve')
 def yieldcurve():
-    date = time.strftime('%Y-%m-%d',time.localtime(time.time()))
-    return render_template("yieldCurvePage.html", update_date=date)
+    #date = time.strftime('%Y-%m-%d',time.localtime(time.time()))
+    yesterday = (date.today() + timedelta(days=-1)).strftime("%Y-%m-%d")  # 昨天日期
+    return render_template("yieldCurvePage.html", update_date=yesterday)
 
 
 @app.route('/calculator')
