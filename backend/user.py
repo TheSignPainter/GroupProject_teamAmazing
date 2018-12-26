@@ -1,4 +1,4 @@
-from hive_remote import getUser, getUserByID, addUser
+from backend.hive_remote import getUser, getUserByID, addUser
 
 class User():
     def __init__(self):

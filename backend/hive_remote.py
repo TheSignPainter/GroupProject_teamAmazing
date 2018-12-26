@@ -1,10 +1,10 @@
 from pyhive import hive
-#import pandas as pd
+import pandas as pd
 import sys
-from algorithm import Bond
+from algorithm.algorithm import Bond
 import datetime
 import re
-from util import id_generator, yieldtomaturity
+from backend.util import id_generator, yieldtomaturity
 import json
 
 def to_date(date_string):
@@ -21,15 +21,13 @@ def gen_maturity_date(matu):
 conn = hive.Connection(host="202.120.38.90", port=10086, auth="NOSASL")
 
 cursor = conn.cursor()
-# An example on inserting data. Note: only "users" table supports that.
-# command = 'CREATE TABLE users(id STRING, user_name STRING, email STRING, password STRING)' \
-#           'CLUSTERED BY(id) INTO 64 BUCKETS STORED AS ORC ' \
-#           'TBLPROPERTIES("transactional"="true",' \
-#           '  "compactor.mapreduce.map.memory.mb"="2048",' \
-#           '  "compactorthreshold.hive.compactor.delta.num.threshold"="4",' \
-#           '  "compactorthreshold.hive.compactor.delta.pct.threshold"="0.5"' \
-#           ')'
-command = "show tables"
+command = ("drop table users")
+cursor.execute(command)
+command = 'CREATE TABLE users(id STRING, user_name STRING, email STRING, password STRING)' \
+          'CLUSTERED BY(id) INTO 2 BUCKETS STORED AS ORC ' \
+          'TBLPROPERTIES("transactional"="true"' \
+           ')'
+# command = "show tables"
 cursor.execute(command)
 # print("insertion done.")
 for result in cursor.fetchall():
