@@ -1,6 +1,6 @@
 import re
 import uuid
-from algorithm import Bond
+from algorithm.algorithm import Bond
 from datetime import date, datetime
 
 

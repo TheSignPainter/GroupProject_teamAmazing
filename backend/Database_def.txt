@@ -1,0 +1,35 @@
+
+CREATE TABLE bonds(
+company_name STRING
+STRING
+bond_id STRING
+abbrev STRING
+release_date STRING 
+on_market_date STRING 
+issue_amount DOUBLE 
+denomination DOUBLE
+initial_offer_price DOUBLE
+bond_term DOUBLE
+APR DOUBLE
+adjusted_APR DOUBLE
+dated_date STRING (MM-DD)
+expiration_date STRING 
+redemption_price DOUBLE
+issue_start_date STRING 
+issue_end_date STRING 
+subscriber STRING 
+bond_value DOUBLE
+list_location STRING
+credit_rank STRING
+issue_institution STRING
+repayment_method STRING
+guarantor STRING
+issurance_method STRING
+issuing_target STRING
+lead_underwriter STRING
+tax_status STRING
+bond_type STRING
+item STRING
+remarks STRING
+)
+DELIMITED BY '\t';
